@@ -59,7 +59,7 @@ resource "proxmox_vm_qemu" "vm" {
   ciuser     = module.credentials.vm_username
   cipassword = module.credentials.vm_password
   skip_ipv6  = true
-  nameserver = join(",", var.dns_servers)
+  nameserver = join(" ", var.dns_servers)
   ipconfig0  = "ip=${var.ip_address}/${var.cidr_netmask},gw=${var.gateway}"
 
   sshkeys = module.credentials.public_key_ssh
