@@ -5,7 +5,7 @@ locals {
     ])) :
     tag => [
       for name, vm in var.ubuntu_vms :
-      "${name} ansible_host=${vm.ip_address} ansible_user=${var.ansible_user} vault_path=proxmox_vms/data/${var.target_node}-${name}-${var.ansible_user}"
+      "${name} ansible_host=${vm.ip_address} ansible_user=${var.ansible_user} vault_path=proxmox_vms/data/${vm.target_node}-${name}-${var.ansible_user}"
       if contains(vm.tags, tag)
     ]
   }
